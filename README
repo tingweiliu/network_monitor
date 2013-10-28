@@ -1,0 +1,30 @@
+
+1. How to build?
+	step1: 
+		Make sure you have installed kernel-default-source,kernel-default-devel
+	step2: 
+		Skip, if you have built your kernel before.
+		Enter your kernel source "make oldconfig;make prepare;make modules_prepare;make"
+	step3:
+		make
+2. How to use?
+	step1:
+		./netmonitor.sh start
+	step2:
+		./monitor_control -a -t -p 80 #add monitor tcp port 80
+		...
+		...
+
+
+		./monitor_control -l #list all monitored port
+	step3:
+		./monitor_read #read all monitor date
+	
+3. What shoud I do?
+	Write your reader function follow monitor_read.
+
+4. Questions & donate
+	Tony <tingw.liu@gmail.com>
+
+
+

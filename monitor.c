@@ -79,7 +79,7 @@ struct hashnode *__gethashnode(unsigned char protocol, unsigned short netport)
 		if(tpos->port == netport && tpos->protocol == protocol)
 			return tpos;
 	}
-	return tpos;
+	return NULL;
 }
 
 int delnode(unsigned char protocol, unsigned short netport)
