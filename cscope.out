@@ -1,0 +1,4365 @@
+cscope 15 $HOME/test -q 0000000315 0000022689
+	@/root/test/memdevice.c
+
+38 
+	~<löux/moduÀ.h
+>
+
+39 
+	~<löux/ty≥s.h
+>
+
+40 
+	~<löux/fs.h
+>
+
+41 
+	~<löux/î∫o.h
+>
+
+42 
+	~<löux/mm.h
+>
+
+43 
+	~<löux/sched.h
+>
+
+44 
+	~<löux/öô.h
+>
+
+45 
+	~<löux/cdev.h
+>
+
+46 
+	~<asm/io.h
+>
+
+47 
+	~<asm/sy°em.h
+>
+
+48 
+	~<asm/uac˚ss.h
+>
+
+49 
+	~<löux/¶ab.h
+>
+
+50 
+	~<löux/t˝.h
+>
+
+51 
+	~<löux/udp.h
+>
+
+53 
+	~"memdevi˚.h
+"
+
+54 
+	~"m⁄ô‹.h
+"
+
+56 
+	#MEM_CLEAR
+ 0x1
+
+	)
+
+57 
+	#GLOBALMEM_MAJOR
+ 250
+
+	)
+
+58 
+	#GLOBALMEM_MINOR
+ 1
+
+	)
+
+60 
+MODULE_AUTHOR
+("LTW");
+
+61 
+MODULE_LICENSE
+("GPL");
+
+63 
+kmem_ˇche
+ *
+ˇchï
+;
+
+65 
+	gkî√lmem_maj‹
+ = 
+GLOBALMEM_MAJOR
+;
+
+66 
+moduÀ_∑øm
+(
+kî√lmem_maj‹
+, , 
+S_IRUGO
+);
+
+69 
+li°_hód
+ 
+	gb™dli°
+;
+
+70 
+DEFINE_SPINLOCK
+(
+dñay_lock
+);
+
+71 
+DECLARE_WAIT_QUEUE_HEAD
+(
+dñayd©a_queue
+);
+
+72 
+	g«me_Êag
+=0;
+
+74 
+©omic_t
+ 
+ßvednum
+;
+
+76 
+	$my©oi
+(*
+p‹t
+)
+
+78 *
+t
+ = 
+p‹t
+;
+
+79 
+p
+ = 0;
+
+80 
+i
+ = 1;
+
+81 *(++
+t
+));
+
+82 --
+t
+;
+
+83 
+t
+ !
+p‹t
+ - 1) {
+
+84 
+p
+ +(*
+t
+ - '0'Ë* 
+i
+;
+
+85 
+i
+ *= 10;
+
+86 --
+t
+;
+
+88  
+p
+;
+
+89 
+	}
+}
+
+91 
+	$add_d©a
+(
+dñayd©a
+ *
+e
+)
+
+93 #ifde‡
+NETMONITOR_DEBUG
+
+
+94 
+	`¥ötk
+(
+KERN_ALERT
+ "Add one\n");
+
+96 
+	`•ö_lock_bh
+(&
+dñay_lock
+);
+
+97 
+	`li°_add_èû
+(&(
+e
+->
+li°
+), &
+b™dli°
+);
+
+98 
+	`©omic_öc
+(&
+ßvednum
+);
+
+99 
+	`•ö_u∆ock_bh
+(&
+dñay_lock
+);
+
+100 
+«me_Êag
+=1;
+
+101 
+	`wake_up_öãºu±ibÀ
+(&
+dñayd©a_queue
+);
+
+102 
+	}
+}
+
+103 
+	$‰ìli°
+()
+
+105 
+li°_hód
+ *
+i
+,*
+n
+;
+
+106 
+dñayd©a
+ *
+ít
+;
+
+107 
+	`li°_f‹_óch_ß„
+(
+i
+,
+n
+,&
+b™dli°
+){
+
+108 
+ít
+=
+	`li°_íåy
+(
+i
+,
+dñayd©a
+,
+li°
+);
+
+109 
+	`li°_dñ
+(
+i
+);
+
+110 
+	`kmem_ˇche_‰ì
+(
+ˇchï
+, 
+ít
+);
+
+112 
+	}
+}
+
+113 
+	skî√lmem_dev
+
+
+115 
+cdev
+ 
+	mcdev
+;
+
+116 
+loff_t
+ 
+	msize
+;
+
+117 
+£m≠h‹e
+ 
+	m£m
+;
+
+119 
+kî√lmem_dev
+ *
+	gkî√lmem_devp
+;
+
+120 
+	$kî√lmem_›í
+(
+öode
+ *öode, 
+fûe
+ *
+fûp
+)
+
+122 
+fûp
+->
+¥iv©e_d©a
+ = 
+kî√lmem_devp
+;
+
+124 
+	}
+}
+
+126 
+	$kî√lmem_ªÀa£
+(
+öode
+ *öode, 
+fûe
+ *
+fûp
+)
+
+129 
+	}
+}
+
+136 
+ssize_t
+ 
+	$kî√lmem_wrôe
+(
+fûe
+ *fûe, c⁄° 
+__u£r
+ *
+buf
+,
+
+137 
+size_t
+ 
+cou¡
+, 
+loff_t
+ *
+µos
+)
+
+139 
+kbuf
+[
+MAX_BUF_SIZE
+ + 1];
+
+140 *
+¥Ÿo_±r
+, *
+p‹t_±r
+;
+
+141 
+¥Ÿocﬁ
+;
+
+142 
+p‹t
+;
+
+143 
+hashnode
+ *
+node
+;
+
+144 
+addp‹t
+;
+
+145 i‡(
+cou¡
+ > 
+MAX_BUF_SIZE
+) {
+
+146 
+cou¡
+ = 
+MAX_BUF_SIZE
+;
+
+148 i‡(
+	`c›y_‰om_u£r
+(
+kbuf
+, 
+buf
+, 
+cou¡
+)) {
+
+149 
+WRITE_ERROR
+;
+
+151 
+kbuf
+[
+cou¡
+] = 0;
+
+152 i‡(*
+kbuf
+ == 'A')
+
+153 
+addp‹t
+ = 1;
+
+154 i‡(*
+kbuf
+ == 'D')
+
+155 
+addp‹t
+ = 0;
+
+157 
+WRITE_ERROR
+;
+
+159 
+¥Ÿo_±r
+ = 
+	`°rchr
+(
+kbuf
+, ':');
+
+160 i‡(
+¥Ÿo_±r
+ =
+NULL
+)
+
+161 
+WRITE_ERROR
+;
+
+162 ++
+¥Ÿo_±r
+;
+
+164 
+p‹t_±r
+ = 
+	`°rchr
+(
+¥Ÿo_±r
+, ':');
+
+165 i‡(
+p‹t_±r
+ =
+NULL
+)
+
+166 
+WRITE_ERROR
+;
+
+167 *
+p‹t_±r
+ = 0;
+
+168 ++
+p‹t_±r
+;
+
+169 i‡(
+	`°rˇ£cmp
+(
+¥Ÿo_±r
+, "TCP") == 0) {
+
+170 
+¥Ÿocﬁ
+ = 
+IPPROTO_TCP
+;
+
+171 } i‡(
+	`°rˇ£cmp
+(
+¥Ÿo_±r
+, "UDP") == 0) {
+
+172 
+¥Ÿocﬁ
+ = 
+IPPROTO_UDP
+;
+
+174 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: Can't followÅhisÖrotocol\n");
+
+175 
+WRITE_ERROR
+;
+
+177 
+p‹t
+ = 
+	`my©oi
+(
+p‹t_±r
+);
+
+178 i‡(
+p‹t
+ < 0 ||Öort > 65535)
+
+179 
+WRITE_ERROR
+;
+
+180 i‡(
+addp‹t
+) {
+
+181 
+node
+ = 
+	`addnode
+(
+¥Ÿocﬁ
+, 
+	`ht⁄s
+(
+p‹t
+));
+
+182 i‡(
+node
+ =
+NULL
+)
+
+183 
+WRITE_ERROR
+;
+
+185 
+	`dñnode
+(
+¥Ÿocﬁ
+, 
+	`ht⁄s
+(
+p‹t
+));
+
+187  
+cou¡
+;
+
+188 
+WRITE_ERROR
+:
+
+190 
+	}
+}
+
+192 
+ssize_t
+ 
+	$kî√lmem_ªad
+(
+fûe
+ *
+fûp
+, 
+__u£r
+ *
+buf
+, 
+size_t
+ 
+size
+,
+loff_t
+ *
+µos
+)
+
+194 
+cou¡
+ = 
+size
+;
+
+195 
+kî√lmem_dev
+ *
+dev
+ = 
+fûp
+->
+¥iv©e_d©a
+;
+
+196 
+li°_hód
+ *
+i
+,*
+n
+;
+
+197 
+dñayd©a
+ *
+ít
+=
+NULL
+;
+
+198 if(
+	`li°_em±y
+(&
+b™dli°
+)){
+
+199 if(
+	`waô_evít_öãºu±ibÀ
+(
+dñayd©a_queue
+,
+«me_Êag
+!=0)){
+
+200  -
+ERESTARTSYS
+;
+
+203 i‡(
+	`sig«l_≥ndög
+(
+cuºít
+))
+
+204  -
+ERESTARTSYS
+;
+
+205 i‡(
+	`down_öãºu±ibÀ
+(&
+dev
+->
+£m
+))
+
+206  -
+ERESTARTSYS
+;
+
+207 
+	`•ö_lock_bh
+(&
+dñay_lock
+);
+
+208 
+	`li°_f‹_óch_ß„
+(
+i
+,
+n
+,&
+b™dli°
+){
+
+209 
+ít
+ = 
+	`li°_íåy
+(
+i
+,
+dñayd©a
+,
+li°
+);
+
+210 
+	`li°_dñ
+(
+i
+);
+
+211 
+«me_Êag
+ = 0;
+
+214 
+	`•ö_u∆ock_bh
+(&
+dñay_lock
+);
+
+215 i‡(
+ít
+ =
+NULL
+)
+
+216 
+GOT_ERROR
+;
+
+217 i‡(
+	`c›y_to_u£r
+(
+buf
+,(*)
+ít
+, (
+dñayd©a
+))) {
+
+218 
+	`¥ötk
+(
+KERN_ALERT
+ "network_monitor: %d copy_to_userÉrror\n",
+
+219 
+__LINE__
+);
+
+220 
+COPY_ERROR
+;
+
+222 
+	`©omic_dec
+(&
+ßvednum
+);
+
+223 
+	`kmem_ˇche_‰ì
+(
+ˇchï
+, 
+ít
+);
+
+224 
+	`up
+(&
+dev
+->
+£m
+);
+
+225  
+cou¡
+;
+
+227 
+COPY_ERROR
+:
+
+228 
+	`©omic_dec
+(&
+ßvednum
+);
+
+229 
+	`kmem_ˇche_‰ì
+(
+ˇchï
+, 
+ít
+);
+
+230 
+GOT_ERROR
+:
+
+231 
+	`up
+(&
+dev
+->
+£m
+);
+
+233 
+	}
+}
+
+237 
+	$kî√lmem_io˘l
+(
+fûe
+ *
+fûp
+, 
+cmd
+, 
+¨g
+)
+
+239 
+kî√lmem_dev
+ *
+dev
+ = 
+fûp
+->
+¥iv©e_d©a
+;
+
+240 
+îr
+ = -1;
+
+241 i‡(
+	`sig«l_≥ndög
+(
+cuºít
+))
+
+242  -
+ERESTARTSYS
+;
+
+243 i‡(
+	`down_öãºu±ibÀ
+(&
+dev
+->
+£m
+))
+
+244  -
+ERESTARTSYS
+;
+
+245 
+cmd
+) {
+
+246 
+SIOGETMONITOR_COUNT
+:
+
+247 
+	`¥ötk
+(
+KERN_INFO
+ "network monitor: Got SIOGETMONITOR_COUNT\n");
+
+248 
+îr
+ = 
+	`gëm⁄ô‹_cou¡
+((
+__u£r
+ *)
+¨g
+);
+
+250 
+SIOGETMONITOR_CONTENT
+:
+
+251 
+	`¥ötk
+(
+KERN_INFO
+ "network monitor: Got SIOGETMONITOR_CONTENT\n");
+
+252 
+îr
+ = 
+	`gëm⁄ô‹_c⁄ã¡
+((
+__u£r
+ *)
+¨g
+);
+
+255 
+îr
+ = -
+ENOIOCTLCMD
+;
+
+258 
+	`up
+(&
+dev
+->
+£m
+);
+
+259 i‡(
+îr
+)
+
+260 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: %s:%dÉrr=%d\n",
+
+261 
+__FILE__
+, 
+__LINE__
+, 
+îr
+);
+
+262  
+îr
+;
+
+263 
+	}
+}
+
+265 c⁄° 
+fûe_›î©i⁄s
+ 
+	gkî√lmem_f›s
+ =
+
+267 .
+ow√r
+ = 
+THIS_MODULE
+,
+
+268 .
+	gŒ£ek
+ = 
+NULL
+,
+
+269 .
+	gªad
+ = 
+kî√lmem_ªad
+,
+
+270 .
+	gwrôe
+ = 
+kî√lmem_wrôe
+,
+
+271 .
+	g›í
+ = 
+kî√lmem_›í
+,
+
+272 .
+	gu∆ocked_io˘l
+ = 
+kî√lmem_io˘l
+,
+
+273 .
+	gªÀa£
+ = 
+kî√lmem_ªÀa£
+,
+
+275 
+	$kî√lmem_£tup_cdev
+(
+kî√lmem_dev
+ *
+dev
+, 
+ödex
+)
+
+277 
+îr
+, 
+devno
+ = 
+	`MKDEV
+(
+kî√lmem_maj‹
+, 
+ödex
+);
+
+278 
+	`cdev_öô
+(&
+dev
+->
+cdev
+, &
+kî√lmem_f›s
+);
+
+279 
+dev
+->
+cdev
+.
+ow√r
+ = 
+THIS_MODULE
+;
+
+280 
+dev
+->
+cdev
+.
+›s
+ = &
+kî√lmem_f›s
+;
+
+281 
+dev
+->
+size
+=0;
+
+282 
+îr
+ = 
+	`cdev_add
+(&
+dev
+->
+cdev
+, 
+devno
+, 1);
+
+283 if(
+îr
+)
+
+284 
+	`¥ötk
+(
+KERN_NOTICE
+ "Eº‹ %dáddög GLTW%d", 
+îr
+, 
+ödex
+);
+
+285 
+	}
+}
+
+286 
+	$kî√lmem_öô
+()
+
+288 
+ªsu…
+;
+
+289 
+dev_t
+ 
+devno
+ = 
+	`MKDEV
+(
+kî√lmem_maj‹
+, 
+GLOBALMEM_MINOR
+);
+
+290 i‡(
+kî√lmem_maj‹
+)
+
+291 
+ªsu…
+ = 
+	`ªgi°î_chrdev_ªgi⁄
+(
+devno
+, 1, "delaymem");
+
+293 
+ªsu…
+ = 
+	`Æloc_chrdev_ªgi⁄
+(&
+devno
+, 0, 1, "delaymem");
+
+294 
+kî√lmem_maj‹
+ = 
+	`MAJOR
+(
+devno
+);
+
+296 i‡(
+ªsu…
+ < 0)
+
+297  
+ªsu…
+;
+
+298 
+kî√lmem_devp
+ = 
+	`kmÆloc
+((
+kî√lmem_dev
+), 
+GFP_KERNEL
+);
+
+299 if(!
+kî√lmem_devp
+){
+
+300 
+ªsu…
+ = - 
+ENOMEM
+;
+
+301 
+Áû_mÆloc
+;
+
+303 
+	`mem£t
+(
+kî√lmem_devp
+, 0, (
+kî√lmem_dev
+));
+
+304 
+	`kî√lmem_£tup_cdev
+(
+kî√lmem_devp
+, 
+GLOBALMEM_MINOR
+);
+
+305 
+	`£ma_öô
+(&
+kî√lmem_devp
+->
+£m
+, 1);
+
+306 
+	`INIT_LIST_HEAD
+(&
+b™dli°
+);
+
+308 
+Áû_mÆloc
+:
+
+309 
+	`uƒegi°î_chrdev_ªgi⁄
+(
+devno
+, 1);
+
+310  
+ªsu…
+;
+
+311 
+	}
+}
+
+312 
+	$kî√lmem_exô
+()
+
+314 
+	`cdev_dñ
+(&
+kî√lmem_devp
+->
+cdev
+);
+
+315 
+	`k‰ì
+(
+kî√lmem_devp
+);
+
+316 
+	`‰ìli°
+();
+
+317 
+	`uƒegi°î_chrdev_ªgi⁄
+(
+	`MKDEV
+(
+kî√lmem_maj‹
+, 
+GLOBALMEM_MINOR
+), 1);
+
+318 
+	}
+}
+
+	@/root/test/memdevice.h
+
+32 #i‚de‡
+__KERNEL_MEMDEVICE_H__
+
+
+33 
+	#__KERNEL_MEMDEVICE_H__
+
+
+	)
+
+35 
+	~"u£r•a˚_kî√l.h
+"
+
+39 
+add_d©a
+(
+dñayd©a
+ *
+node
+);
+
+40 
+kî√lmem_öô
+();
+
+41 
+kî√lmem_exô
+();
+
+	@/root/test/monitor.c
+
+35 
+	~<löux/moduÀ.h
+>
+
+36 
+	~<löux/moduÀ∑øm.h
+>
+
+37 
+	~<löux/√tfûãr.h
+>
+
+38 
+	~<√t/icmp.h
+>
+
+39 
+	~<löux/skbuff.h
+>
+
+41 
+	~"m⁄ô‹.h
+"
+
+42 
+	~"u£r•a˚_kî√l.h
+"
+
+43 
+	~"memdevi˚.h
+"
+
+45 
+DEFINE_SPINLOCK
+(
+hashli°_lock
+);
+
+46 
+timî_li°
+ 
+	gtimî
+;
+
+48 
+nf_hook_›s
+ 
+	gùhook_ö
+;
+
+49 
+nf_hook_›s
+ 
+	gùhook_out
+;
+
+51 
+hli°_hód
+ 
+	ghashnode_li°
+[
+MAX_LIST
+];
+
+53 
+kmem_ˇche
+ *
+	gˇchï
+ = 
+NULL
+;
+
+55 
+	gmax_ßve_num
+ = 
+MAX_SAVE_NODE
+;
+
+56 
+moduÀ_∑øm
+(
+max_ßve_num
+, , 0644);
+
+58 
+©omic_t
+ 
+	gßvednum
+;
+
+59 
+	$hashnode_hód_öô
+()
+
+61 
+i
+=0;
+
+62 ; 
+i
+ < 
+MAX_LIST
+; i++)
+
+63 
+	`INIT_HLIST_HEAD
+(&
+hashnode_li°
+[
+i
+]);
+
+64 
+	}
+}
+
+67 
+	$gëhash
+(
+√ç‹t
+)
+
+69  
+	`¡ohs
+(
+√ç‹t
+)&(
+MAX_LIST
+ - 1);
+
+70 
+	}
+}
+
+73 
+hashnode
+ *
+	$__gëhashnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+)
+
+75 
+hli°_node
+ *
+pos
+;
+
+76 
+hashnode
+ *
+ços
+ = 
+NULL
+;
+
+77 
+ödex
+ = 
+	`gëhash
+(
+√ç‹t
+);
+
+78 
+	`hli°_f‹_óch_íåy
+(
+ços
+, 
+pos
+, &
+hashnode_li°
+[
+ödex
+], 
+li°
+) {
+
+79 if(
+ços
+->
+p‹t
+ =
+√ç‹t
+ &&Åpos->
+¥Ÿocﬁ
+ ==Örotocol)
+
+80  
+ços
+;
+
+82  
+ços
+;
+
+83 
+	}
+}
+
+85 
+	$dñnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+)
+
+87 
+hli°_node
+ *
+pos
+, *
+n
+;
+
+88 
+hashnode
+ *
+ços
+ = 
+NULL
+;
+
+89 
+ödex
+ = 
+	`gëhash
+(
+√ç‹t
+);
+
+90 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+91 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+ödex
+],
+li°
+){
+
+92 if(
+ços
+->
+p‹t
+ =
+√ç‹t
+ &&Åpos->
+¥Ÿocﬁ
+ ==Örotocol) {
+
+93 
+	`hli°_dñ
+(&
+ços
+->
+li°
+);
+
+94 
+	`k‰ì
+(
+ços
+);
+
+95 
+	`¥ötk
+(
+KERN_INFO
+ "network monitor: Remove monitor "
+
+96 "%d:%u\n", 
+¥Ÿocﬁ
+, 
+	`¡ohs
+(
+√ç‹t
+));
+
+99 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+101 
+	}
+}
+
+102 
+hashnode
+ *
+	$addnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+)
+
+104 
+hli°_node
+ *
+pos
+;
+
+105 
+hashnode
+ *
+ços
+ = 
+NULL
+;
+
+106 
+ödex
+ = 
+	`gëhash
+(
+√ç‹t
+);
+
+107 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+108 
+	`hli°_f‹_óch_íåy
+(
+ços
+,
+pos
+,&
+hashnode_li°
+[
+ödex
+],
+li°
+){
+
+109 if(
+ços
+->
+p‹t
+ =
+√ç‹t
+ &&Åpos->
+¥Ÿocﬁ
+ ==Örotocol) {
+
+110 
+	`¥ötk
+(
+KERN_INFO
+ "network monitor: Already in monitor "
+
+111 "%d:%u\n", 
+¥Ÿocﬁ
+, 
+	`¡ohs
+(
+√ç‹t
+));
+
+112 
+ADDOK
+;
+
+115 
+ços
+ = (
+hashnode
+*)
+	`kzÆloc
+((hashnode), 
+GFP_ATOMIC
+);
+
+116 i‡(
+	`likñy
+(
+ços
+)) {
+
+117 
+ços
+->
+¥Ÿocﬁ
+ =Örotocol;
+
+118 
+ços
+->
+p‹t
+ = 
+√ç‹t
+;
+
+119 
+	`¥ötk
+(
+KERN_INFO
+ "network monitor: AddÇew monitor %d:%u\n",
+
+120 
+¥Ÿocﬁ
+, 
+	`¡ohs
+(
+√ç‹t
+));
+
+121 
+	`hli°_add_hód
+(&(
+ços
+->
+li°
+),&
+hashnode_li°
+[
+ödex
+]);
+
+123 
+ADDOK
+:
+
+124 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+125  
+ços
+;
+
+126 
+	}
+}
+
+128 
+	$gëm⁄ô‹_cou¡
+(
+__u£r
+ *
+¨g
+)
+
+130 
+hashnode
+ *
+ços
+;
+
+131 
+hli°_node
+ *
+pos
+,*
+n
+;
+
+132 
+i
+, 
+ªt
+, 
+numbî
+ = 0;
+
+133 i‡(
+	`c›y_‰om_u£r
+(&
+numbî
+, 
+¨g
+, ())) {
+
+134 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: %s:%d copy_from_userÉrr!",
+
+135 
+__FILE__
+, 
+__LINE__
+);
+
+136  -
+EFAULT
+;
+
+138 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+139 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+140 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+141 ++
+numbî
+;
+
+144 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+145 
+ªt
+ = 
+	`c›y_to_u£r
+(
+¨g
+, &
+numbî
+, ()Ë? -
+EFAULT
+ : 0;
+
+146  
+ªt
+;
+
+147 
+	}
+}
+
+150 
+	$gëm⁄ô‹_c⁄ã¡
+(
+__u£r
+ *
+¨g
+)
+
+152 
+hashnode
+ *
+ços
+;
+
+153 
+hli°_node
+ *
+pos
+,*
+n
+;
+
+154 
+i
+, 
+ªt
+, 
+numbî
+ = 0;
+
+155 
+c›yÀn
+ = 0;
+
+156 
+m⁄ô‹_node_io˘l
+ *
+n˘l
+, 
+_n˘l
+;
+
+157 i‡(
+	`c›y_‰om_u£r
+(&
+_n˘l
+, 
+¨g
+, (
+m⁄ô‹_node_io˘l
+))) {
+
+158 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: %s:%d copy_from_userÉrr!",
+
+159 
+__FILE__
+, 
+__LINE__
+);
+
+160  -
+EFAULT
+;
+
+162 i‡(
+_n˘l
+.
+cou¡
+ < 0) {
+
+163 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: %s:%d userÖaramÉrr!",
+
+164 
+__FILE__
+, 
+__LINE__
+);
+
+165  -
+EFAULT
+;
+
+167 
+c›yÀn
+ = (
+m⁄ô‹_node_io˘l
+) +
+
+168 (
+m⁄ô‹_node
+Ë* 
+_n˘l
+.
+cou¡
+;
+
+169 
+n˘l
+ = 
+	`kmÆloc
+(
+c›yÀn
+, 
+GFP_KERNEL
+);
+
+170 i‡(
+n˘l
+ =
+NULL
+) {
+
+171 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor: %s:%d kmalloc faild!",
+
+172 
+__FILE__
+, 
+__LINE__
+);
+
+173  -
+EFAULT
+;
+
+176 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+177 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+178 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+179 
+n˘l
+->
+nodes
+[
+numbî
+].
+p‹t
+ = 
+ços
+->port;
+
+180 
+n˘l
+->
+nodes
+[
+numbî
+].
+¥Ÿocﬁ
+ = 
+ços
+->protocol;
+
+181 ++
+numbî
+;
+
+182 i‡(
+numbî
+ >
+_n˘l
+.
+cou¡
+)
+
+186 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+187 
+n˘l
+->
+cou¡
+ = 
+numbî
+;
+
+188 
+	`¥ötk
+(
+KERN_INFO
+ "√tw‹k m⁄ô‹ m⁄ô‹Çumbî=%d\n", 
+numbî
+);
+
+189 
+ªt
+ = 
+	`c›y_to_u£r
+(
+¨g
+, 
+n˘l
+, 
+c›yÀn
+Ë? -
+EFAULT
+ : 0;
+
+190  
+ªt
+;
+
+191 
+	}
+}
+
+193 
+	$hashnode_‰ì
+()
+
+195 
+hashnode
+ *
+ços
+;
+
+196 
+hli°_node
+ *
+pos
+,*
+n
+;
+
+197 
+i
+;
+
+198 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+199 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+200 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+201 
+	`hli°_dñ
+(&
+ços
+->
+li°
+);
+
+202 
+	`k‰ì
+(
+ços
+);
+
+205 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+206 
+	}
+}
+
+207 
+	$__˛ó∫ode
+()
+
+209 
+hashnode
+ *
+ços
+;
+
+210 
+hli°_node
+ *
+pos
+,*
+n
+;
+
+211 
+i
+;
+
+212 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+213 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+214 
+ços
+->
+µs
+ = 0;
+
+215 
+ços
+->
+bps
+ = 0;
+
+216 
+ços
+->
+˝s
+ = 0;
+
+219 
+	}
+}
+
+220 
+	$__shownode
+()
+
+222 
+hashnode
+ *
+ços
+;
+
+223 
+hli°_node
+ *
+pos
+,*
+n
+;
+
+224 
+i
+;
+
+225 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+226 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+227 
+	`¥ötk
+(
+KERN_ALERT
+ "protocol=%d,Öort=%d,Öps=%lu, "
+
+228 "bps=%lu, cps=%lu\n", 
+ços
+->
+¥Ÿocﬁ
+,
+
+229 
+	`¡ohs
+(
+ços
+->
+p‹t
+),Åpos->
+µs
+,Åpos->
+bps
+,
+
+230 
+ços
+->
+˝s
+);
+
+233 
+	}
+}
+
+234 
+	$__ßvíode
+()
+
+236 
+hashnode
+ *
+ços
+;
+
+237 
+hli°_node
+ *
+pos
+, *
+n
+;
+
+238 
+dñayd©a
+ *
+ñem
+;
+
+239 
+i
+;
+
+240 
+time_t
+ 
+now
+ = 
+	`gë_£c⁄ds
+();
+
+241 
+i
+ = 0; i < 
+MAX_LIST
+; i++) {
+
+242 
+	`hli°_f‹_óch_íåy_ß„
+(
+ços
+, 
+pos
+, 
+n
+, &
+hashnode_li°
+[
+i
+], 
+li°
+) {
+
+243 i‡(
+	`©omic_ªad
+(&
+ßvednum
+Ë> 
+max_ßve_num
+) {
+
+244 
+	`¥ötk
+(
+KERN_WARNING
+ "network monitor:Too "
+
+248 
+ñem
+ = 
+	`kmem_ˇche_Æloc
+(
+ˇchï
+, 
+GFP_ATOMIC
+);
+
+249 i‡(
+ñem
+) {
+
+250 
+	`mem˝y
+(&(
+ñem
+->
+node
+), 
+ços
+, (
+hashnode
+));
+
+251 
+ñem
+->
+node
+.
+time°amp
+ = 
+now
+;
+
+252 
+	`add_d©a
+(
+ñem
+);
+
+256 
+	}
+}
+
+258 
+	$timîfun
+(
+¨g
+)
+
+260 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+262 
+	`__ßvíode
+();
+
+263 
+	`__˛ó∫ode
+();
+
+264 
+	`mod_timî
+(&
+timî
+, 
+jiffõs
+ + 
+HZ
+);
+
+265 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+266 
+	}
+}
+
+269 
+	$timî_öô
+()
+
+271 
+	`öô_timî
+(&
+timî
+);
+
+272 
+timî
+.
+fun˘i⁄
+ = &
+timîfun
+;
+
+273 
+timî
+.
+expúes
+ = 
+jiffõs
+ + 
+HZ
+;
+
+274 
+timî
+.
+d©a
+ = 0;
+
+275 
+	`add_timî
+(&
+timî
+);
+
+276 
+	}
+}
+
+278 
+	$timî_exô
+()
+
+280 
+	`dñ_timî_sync
+(&
+timî
+);
+
+281 
+	}
+}
+
+284 
+kmem_ˇche
+ * 
+	$kmemˇche_öô
+()
+
+286 
+ˇchï
+ = 
+	`kmem_ˇche_¸óã
+("√tw‹k_m⁄ô‹", (
+dñayd©a
+),
+
+287 
+SLAB_HWCACHE_ALIGN
+, 0, 
+NULL
+);
+
+288  
+ˇchï
+;
+
+289 
+	}
+}
+
+290 
+	$kmemˇche_‰ì
+()
+
+292 
+	`kmem_ˇche_de°roy
+(
+ˇchï
+);
+
+294 
+	}
+}
+
+296 
+ù∑ckë_ö
+(
+hooknum
+, 
+sk_buff
+ *
+skb
+,
+
+297 c⁄° 
+√t_devi˚
+ *
+ö
+, c⁄° √t_devi˚ *
+out
+,
+
+298 (*
+ok‚
+)(
+sk_buff
+*))
+
+300 
+ùhdr
+ *
+ùh
+;
+
+301 
+t˝hdr
+ *
+th
+ = 
+NULL
+, 
+_t˝h
+;
+
+302 
+udphdr
+ *
+uh
+ = 
+NULL
+, 
+_udph
+;
+
+303 
+¥Ÿoff
+;
+
+304 
+hashnode
+ *
+node
+;
+
+305 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+306 
+ùh
+ = (
+ùhdr
+*)
+	`ù_hdr
+(
+skb
+);
+
+307 
+¥Ÿoff
+ = 
+ùh
+->
+ihl
+ << 2;
+
+308 i‡(
+ùh
+->
+¥Ÿocﬁ
+ =
+IPPROTO_TCP
+) {
+
+309 
+th
+ = 
+	`skb_hódî_poöãr
+(
+skb
+, 
+¥Ÿoff
+, (
+_t˝h
+), &_tcph);
+
+310 i‡(
+th
+) {
+
+311 
+node
+ = 
+	`__gëhashnode
+(
+IPPROTO_TCP
+, 
+th
+->
+de°
+);
+
+312 i‡(
+node
+) {
+
+313 
+node
+->
+µs
+ ++;
+
+314 
+node
+->
+bps
+ +
+	`¡ohs
+(
+ùh
+->
+tŸ_Àn
+);
+
+315 i‡(
+th
+->
+syn
+) {
+
+316 
+node
+->
+˝s
+ ++;
+
+320 } i‡(
+ùh
+->
+¥Ÿocﬁ
+ =
+IPPROTO_UDP
+) {
+
+321 
+uh
+ = 
+	`skb_hódî_poöãr
+(
+skb
+, 
+¥Ÿoff
+, (
+_udph
+), &_udph);
+
+322 i‡(
+uh
+) {
+
+323 
+node
+ = 
+	`__gëhashnode
+(
+IPPROTO_UDP
+, 
+uh
+->
+de°
+);
+
+324 i‡(
+node
+) {
+
+325 
+node
+->
+µs
+ ++;
+
+326 
+node
+->
+bps
+ +
+	`¡ohs
+(
+ùh
+->
+tŸ_Àn
+);
+
+332 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+333  
+NF_ACCEPT
+;
+
+334 
+	}
+}
+
+335 
+ù∑ckë_out
+(
+hooknum
+,
+sk_buff
+ *
+skb
+,
+
+336 c⁄° 
+√t_devi˚
+ *
+ö
+,c⁄° √t_devi˚ *
+out
+,
+
+337 (*
+ok‚
+)(
+sk_buff
+*))
+
+339 
+ùhdr
+ *
+ùh
+;
+
+340 
+t˝hdr
+ *
+th
+ = 
+NULL
+, 
+_t˝h
+;
+
+341 
+udphdr
+ *
+uh
+ = 
+NULL
+, 
+_udph
+;
+
+342 
+¥Ÿoff
+;
+
+343 
+hashnode
+ *
+node
+;
+
+344 
+	`•ö_lock_bh
+(&
+hashli°_lock
+);
+
+345 
+ùh
+ = (
+ùhdr
+*)
+	`ù_hdr
+(
+skb
+);
+
+346 
+¥Ÿoff
+ = 
+ùh
+->
+ihl
+ << 2;
+
+347 i‡(
+ùh
+->
+¥Ÿocﬁ
+ =
+IPPROTO_TCP
+) {
+
+348 
+th
+ = 
+	`skb_hódî_poöãr
+(
+skb
+, 
+¥Ÿoff
+, (
+_t˝h
+), &_tcph);
+
+349 i‡(
+th
+) {
+
+350 
+node
+ = 
+	`__gëhashnode
+(
+IPPROTO_TCP
+, 
+th
+->
+de°
+);
+
+351 i‡(
+node
+) {
+
+352 
+node
+->
+µs
+ ++;
+
+353 
+node
+->
+bps
+ +
+	`¡ohs
+(
+ùh
+->
+tŸ_Àn
+);
+
+354 i‡(
+th
+->
+syn
+) {
+
+355 
+node
+->
+˝s
+ ++;
+
+359 } i‡(
+ùh
+->
+¥Ÿocﬁ
+ =
+IPPROTO_UDP
+) {
+
+360 
+uh
+ = 
+	`skb_hódî_poöãr
+(
+skb
+, 
+¥Ÿoff
+, (
+_udph
+), &_udph);
+
+361 i‡(
+uh
+) {
+
+362 
+node
+ = 
+	`__gëhashnode
+(
+IPPROTO_UDP
+, 
+uh
+->
+de°
+);
+
+363 i‡(
+node
+) {
+
+364 
+node
+->
+µs
+ ++;
+
+365 
+node
+->
+bps
+ +
+	`¡ohs
+(
+ùh
+->
+tŸ_Àn
+);
+
+371 
+	`•ö_u∆ock_bh
+(&
+hashli°_lock
+);
+
+372  
+NF_ACCEPT
+;
+
+373 
+	}
+}
+
+374 
+	$ùhook_öô
+()
+
+376 
+	`mem£t
+(&
+ùhook_ö
+,0,(
+nf_hook_›s
+));
+
+377 
+ùhook_ö
+.
+hook
+=
+ù∑ckë_ö
+;
+
+378 
+ùhook_ö
+.
+ow√r
+=
+THIS_MODULE
+;
+
+379 
+ùhook_ö
+.
+pf
+=
+PF_INET
+;
+
+380 
+ùhook_ö
+.
+hooknum
+=
+NF_INET_LOCAL_IN
+;
+
+382 
+	`mem£t
+(&
+ùhook_out
+,0,(
+nf_hook_›s
+));
+
+383 
+ùhook_out
+.
+hook
+=
+ù∑ckë_out
+;
+
+384 
+ùhook_out
+.
+ow√r
+=
+THIS_MODULE
+;
+
+385 
+ùhook_out
+.
+pf
+=
+PF_INET
+;
+
+386 
+ùhook_out
+.
+hooknum
+=
+NF_INET_LOCAL_OUT
+;
+
+388 
+	`nf_ªgi°î_hook
+(&
+ùhook_ö
+);
+
+389 
+	`nf_ªgi°î_hook
+(&
+ùhook_out
+);
+
+391 
+	}
+}
+
+393 
+	$ùhook_exô
+()
+
+395 
+	`nf_uƒegi°î_hook
+(&
+ùhook_ö
+);
+
+396 
+	`nf_uƒegi°î_hook
+(&
+ùhook_out
+);
+
+397 
+	}
+}
+
+399 
+__öô
+ 
+	$√tw‹k_m⁄ô‹_öô
+()
+
+401 
+	`©omic_£t
+(&
+ßvednum
+, 1);
+
+402 i‡(
+	`kmemˇche_öô
+(Ë=
+NULL
+) {
+
+403 
+	`¥ötk
+(
+KERN_ALERT
+ "kmemcache_initÉrr!\n");
+
+404 
+CACHE_ERROR
+;
+
+406 i‡(
+	`kî√lmem_öô
+() != 0) {
+
+407 
+	`¥ötk
+(
+KERN_ALERT
+ "memdevice initÉrr!\n");
+
+408 
+MEMDEVICE_ERROR
+;
+
+410 
+	`hashnode_hód_öô
+();
+
+411 
+	`ùhook_öô
+();
+
+412 
+	`timî_öô
+();
+
+415 
+MEMDEVICE_ERROR
+:
+
+416 
+	`kmemˇche_‰ì
+();
+
+417 
+CACHE_ERROR
+:
+
+419 
+	}
+}
+
+421 
+__exô
+ 
+	$√tw‹k_m⁄ô‹_exô
+()
+
+423 
+	`timî_exô
+();
+
+424 
+	`ùhook_exô
+();
+
+425 
+	`hashnode_‰ì
+();
+
+426 
+	`kî√lmem_exô
+();
+
+427 
+	`kmemˇche_‰ì
+();
+
+428 
+	}
+}
+
+430 
+moduÀ_öô
+(
+√tw‹k_m⁄ô‹_öô
+);
+
+431 
+moduÀ_exô
+(
+√tw‹k_m⁄ô‹_exô
+);
+
+432 
+MODULE_LICENSE
+("GPL");
+
+433 
+MODULE_AUTHOR
+("Tony <tingw.liu@gmail.com>");
+
+	@/root/test/monitor.h
+
+35 #i‚de‡
+__LINUX_MONITOR_H__
+
+
+36 
+	#__LINUX_MONITOR_H__
+
+
+	)
+
+37 
+	~<löux/moduÀ.h
+>
+
+38 
+	~<löux/¶ab.h
+>
+
+39 
+	~<löux/li°.h
+>
+
+40 
+	~<löux/t˝.h
+>
+
+41 
+	~<löux/ù.h
+>
+
+42 
+	~<löux/udp.h
+>
+
+44 
+	#MAX_LIST
+ 1024
+
+	)
+
+45 
+	#MAX_SAVE_NODE
+ 10240
+
+	)
+
+47 
+hashnode
+ *
+addnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+);
+
+48 
+dñnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+);
+
+49 
+gëm⁄ô‹_cou¡
+(
+__u£r
+ *
+¨g
+);
+
+50 
+gëm⁄ô‹_c⁄ã¡
+(
+__u£r
+ *
+¨g
+);
+
+	@/root/test/monitor_control.c
+
+35 
+	~<°dio.h
+>
+
+36 
+	~<°dlib.h
+>
+
+37 
+	~<uni°d.h
+>
+
+38 
+	~<°rög.h
+>
+
+39 
+	~<sys/ty≥s.h
+>
+
+40 
+	~<sys/°©.h
+>
+
+41 
+	~<f˙é.h
+>
+
+42 
+	~<gë›t.h
+>
+
+45 
+	sli°_hód
+ {
+
+46 
+li°_hód
+ *
+	m√xt
+, *
+	m¥ev
+;
+
+48 
+	shli°_node
+ {
+
+49 
+hli°_node
+ *
+	m√xt
+, **
+	mµªv
+;
+
+51 
+	~"u£r•a˚_kî√l.h
+"
+
+53 
+	g›ti⁄
+;
+
+54 c⁄° *
+	g›ti⁄s
+ = "hladtup:";
+
+55 c⁄° 
+›ti⁄
+ 
+	gl⁄g_›ti⁄s
+[] = {
+
+56 {"hñp", 0, 
+NULL
+, 'h'},
+
+57 {"add", 0, 
+NULL
+, 'a'},
+
+58 {"dñ", 0, 
+NULL
+, 'd'},
+
+59 {"p‹t", 1, 
+NULL
+, 'p'},
+
+60 {"t˝", 0, 
+NULL
+, 't'},
+
+61 {"udp", 0, 
+NULL
+, 'u'},
+
+62 {"li°", 0, 
+NULL
+, 'l'},
+
+63 {
+NULL
+, 0, NULL, 0}
+
+66 
+	$hñp
+()
+
+68 
+	`¥ötf
+("Usage: monitor_control -[hadtu] -pÖort\n");
+
+69 
+	`¥ötf
+("\t -l --list List monitoredÖort\n");
+
+70 
+	`¥ötf
+("\t -a --add AddáÇewÖortÅo monitor\n");
+
+71 
+	`¥ötf
+("\t -d --del DeleteáÇewÖortÅo monitor\n");
+
+72 
+	`¥ötf
+("\t -t --tcp MonitorÅcpÖrotocol\n");
+
+73 
+	`¥ötf
+("\t -u --udp Monitor udpÖrotocol\n");
+
+74 
+	`¥ötf
+("\t -p --port MonitorÖortÇumber\n");
+
+75 
+	`¥ötf
+("\t -h --help PrintÅhis manual\n");
+
+76 
+	`¥ötf
+("monitor_control -a -t -p 80\n");
+
+77 
+	`¥ötf
+("monitor_control -d -u -p 8000\n");
+
+78 
+	`¥ötf
+("Any questionsánd donateÅo Tony <tingw.liu@gmail.com>!\n");
+
+79 
+	`exô
+(-1);
+
+80 
+	}
+}
+
+82 
+	$maö
+(
+¨gc
+, **
+¨gv
+)
+
+84 
+fd
+, 
+ªt
+ = 0;
+
+85 
+dñayd©a
+ 
+d©a
+;
+
+86 
+buf
+[
+MAX_BUF_SIZE
+] = {0};
+
+87 *
+ty≥
+ = 
+NULL
+, *
+¥Ÿocﬁty≥
+ = NULL, *
+p‹t
+ = NULL;
+
+88 
+li°
+ = 0, 
+m⁄ô‹cou¡
+ = 0, 
+i
+;
+
+89 
+m⁄ô‹_node_io˘l
+ *
+n˘l
+;
+
+90 (
+›ti⁄
+ = 
+	`gë›t_l⁄g
+(
+¨gc
+, 
+¨gv
+, 
+›ti⁄s
+, 
+l⁄g_›ti⁄s
+, 
+NULL
+)) != -1)
+
+92 
+›ti⁄
+) {
+
+94 
+	`hñp
+();
+
+97 
+ty≥
+ = "A";
+
+100 
+ty≥
+ = "D";
+
+103 
+¥Ÿocﬁty≥
+ = "TCP";
+
+106 
+¥Ÿocﬁty≥
+ = "UDP";
+
+109 
+p‹t
+ = 
+	`°rdup
+(
+›èrg
+);
+
+112 
+li°
+ = 1;
+
+115 
+	`hñp
+();
+
+118 i‡(
+li°
+) {
+
+119 
+fd
+ = 
+	`›í
+("/dev/dñaymem",
+O_RDONLY
+);
+
+120 i‡(
+fd
+ == -1) {
+
+121 
+	`¥ötf
+("open /dev/delaymemÉrror\n");
+
+122 
+	`exô
+(0);
+
+124 
+ªt
+ = 
+	`io˘l
+(
+fd
+, 
+SIOGETMONITOR_COUNT
+, &
+m⁄ô‹cou¡
+);
+
+125 i‡(
+ªt
+ == 0) {
+
+126 
+	`¥ötf
+("m⁄ô‹ cou¡ = %d\n", 
+m⁄ô‹cou¡
+);
+
+127 
+n˘l
+ = 
+	`mÆloc
+((
+m⁄ô‹_node_io˘l
+) +
+
+128 (
+m⁄ô‹_node
+Ë* 
+m⁄ô‹cou¡
+);
+
+129 
+n˘l
+->
+cou¡
+ = 
+m⁄ô‹cou¡
+;
+
+130 
+ªt
+ = 
+	`io˘l
+(
+fd
+, 
+SIOGETMONITOR_CONTENT
+, 
+n˘l
+);
+
+136 
+i
+ = 0; i < 
+n˘l
+->
+cou¡
+; i++) {
+
+137 
+	`¥ötf
+("protocol=%dÖort=%d\n",
+
+138 
+n˘l
+->
+nodes
+[
+i
+].
+¥Ÿocﬁ
+,
+
+139 
+	`¡ohs
+(
+n˘l
+->
+nodes
+[
+i
+].
+p‹t
+));
+
+142 
+	`˛o£
+(
+fd
+);
+
+144 i‡(
+ty≥
+ && 
+¥Ÿocﬁty≥
+ && 
+p‹t
+) {
+
+145 
+fd
+ = 
+	`›í
+("/dev/dñaymem",
+O_WRONLY
+);
+
+146 i‡(
+fd
+ == -1) {
+
+147 
+	`¥ötf
+("open /dev/delaymemÉrror\n");
+
+148 
+	`exô
+(0);
+
+150 
+	`¢¥ötf
+(
+buf
+, 
+MAX_BUF_SIZE
+, "%s:%s:%s", 
+ty≥
+, 
+¥Ÿocﬁty≥
+, 
+p‹t
+);
+
+151 
+ªt
+ = 
+	`wrôe
+(
+fd
+, 
+buf
+, 
+	`°æí
+(buf));
+
+152 i‡(
+ªt
+ !
+	`°æí
+(
+buf
+)) {
+
+153 
+	`¥ötf
+("CommandÑun fail\n");
+
+155 
+	`¥ötf
+("CommandÑun success\n");
+
+157 
+	`˛o£
+(
+fd
+);
+
+159 
+	`hñp
+();
+
+161 
+	}
+}
+
+	@/root/test/monitor_read.c
+
+19 
+	~<°dio.h
+>
+
+20 
+	~<°dlib.h
+>
+
+21 
+	~<uni°d.h
+>
+
+22 
+	~<°rög.h
+>
+
+23 
+	~<sys/ty≥s.h
+>
+
+24 
+	~<sys/°©.h
+>
+
+25 
+	~<f˙é.h
+>
+
+29 
+	sli°_hód
+ {
+
+30 
+li°_hód
+ *
+	m√xt
+, *
+	m¥ev
+;
+
+32 
+	shli°_node
+ {
+
+33 
+hli°_node
+ *
+	m√xt
+, **
+	mµªv
+;
+
+35 
+	~"u£r•a˚_kî√l.h
+"
+
+37 
+	$maö
+()
+
+39 
+fd
+, 
+Àn
+;
+
+40 
+dñayd©a
+ 
+d©a
+;
+
+41 
+fd
+ = 
+	`›í
+("/dev/dñaymem",
+O_RDONLY
+);
+
+42 i‡(
+fd
+ == -1) {
+
+43 
+	`¥ötf
+("open /dev/delaymemÉrror\n");
+
+44 
+	`exô
+(0);
+
+47 
+Àn
+ = 
+	`ªad
+(
+fd
+, &
+d©a
+, (
+dñayd©a
+));
+
+48 if(
+Àn
+ =(
+dñayd©a
+)){
+
+49 
+	`¥ötf
+("time=%uÖrotocol=%dÖort=%d:Öps=%lu "
+
+50 "bps=%lu cps=%lu\n", 
+d©a
+.
+node
+.
+time°amp
+,
+
+51 
+d©a
+.
+node
+.
+¥Ÿocﬁ
+, 
+	`¡ohs
+(d©a.node.
+p‹t
+),
+
+52 
+d©a
+.
+node
+.
+µs
+, d©a.node.
+bps
+, d©a.node.
+˝s
+);
+
+55 
+	}
+}
+
+	@/root/test/userspace_kernel.h
+
+36 #i‚de‡
+__USERSPACE_KERNEL_H
+
+
+37 
+	#__USERSPACE_KERNEL_H
+
+
+	)
+
+38 
+	shashnode
+{
+
+39 
+hli°_node
+ 
+	mli°
+;
+
+40 
+time_t
+ 
+	mtime°amp
+;
+
+41 
+	m¥Ÿocﬁ
+;
+
+42 
+	mp‹t
+;
+
+43 
+	mµs
+;
+
+44 
+	mbps
+;
+
+45 
+	m˝s
+;
+
+48 
+	sdñayd©a
+{
+
+49 
+li°_hód
+ 
+	mli°
+;
+
+50 
+hashnode
+ 
+	mnode
+;
+
+54 
+	sm⁄ô‹_node
+{
+
+55 
+	m¥Ÿocﬁ
+;
+
+56 
+	mp‹t
+;
+
+58 
+	sm⁄ô‹_node_io˘l
+{
+
+59 
+	mcou¡
+;
+
+60 
+m⁄ô‹_node
+ 
+	mnodes
+[0];
+
+67 
+	#MAX_BUF_SIZE
+ 31
+
+	)
+
+74 
+	#SIOGETMONITOR_COUNT
+ 30
+
+	)
+
+75 
+	#SIOGETMONITOR_CONTENT
+ 10
+
+	)
+
+	@memdevice.h
+
+32 #i‚de‡
+__KERNEL_MEMDEVICE_H__
+
+
+33 
+	#__KERNEL_MEMDEVICE_H__
+
+
+	)
+
+35 
+	~"u£r•a˚_kî√l.h
+"
+
+39 
+add_d©a
+(
+dñayd©a
+ *
+node
+);
+
+40 
+kî√lmem_öô
+();
+
+41 
+kî√lmem_exô
+();
+
+	@monitor.h
+
+35 #i‚de‡
+__LINUX_MONITOR_H__
+
+
+36 
+	#__LINUX_MONITOR_H__
+
+
+	)
+
+37 
+	~<löux/moduÀ.h
+>
+
+38 
+	~<löux/¶ab.h
+>
+
+39 
+	~<löux/li°.h
+>
+
+40 
+	~<löux/t˝.h
+>
+
+41 
+	~<löux/ù.h
+>
+
+42 
+	~<löux/udp.h
+>
+
+44 
+	#MAX_LIST
+ 1024
+
+	)
+
+45 
+	#MAX_SAVE_NODE
+ 10240
+
+	)
+
+47 
+hashnode
+ *
+addnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+);
+
+48 
+dñnode
+(
+¥Ÿocﬁ
+, 
+√ç‹t
+);
+
+49 
+gëm⁄ô‹_cou¡
+(
+__u£r
+ *
+¨g
+);
+
+50 
+gëm⁄ô‹_c⁄ã¡
+(
+__u£r
+ *
+¨g
+);
+
+	@userspace_kernel.h
+
+36 #i‚de‡
+__USERSPACE_KERNEL_H
+
+
+37 
+	#__USERSPACE_KERNEL_H
+
+
+	)
+
+38 
+	shashnode
+{
+
+39 
+hli°_node
+ 
+	mli°
+;
+
+40 
+time_t
+ 
+	mtime°amp
+;
+
+41 
+	m¥Ÿocﬁ
+;
+
+42 
+	mp‹t
+;
+
+43 
+	mµs
+;
+
+44 
+	mbps
+;
+
+45 
+	m˝s
+;
+
+48 
+	sdñayd©a
+{
+
+49 
+li°_hód
+ 
+	mli°
+;
+
+50 
+hashnode
+ 
+	mnode
+;
+
+54 
+	sm⁄ô‹_node
+{
+
+55 
+	m¥Ÿocﬁ
+;
+
+56 
+	mp‹t
+;
+
+58 
+	sm⁄ô‹_node_io˘l
+{
+
+59 
+	mcou¡
+;
+
+60 
+m⁄ô‹_node
+ 
+	mnodes
+[0];
+
+67 
+	#MAX_BUF_SIZE
+ 31
+
+	)
+
+74 
+	#SIOGETMONITOR_COUNT
+ 30
+
+	)
+
+75 
+	#SIOGETMONITOR_CONTENT
+ 10
+
+	)
+
+	@
+1
+.
+0
+10
+214
+/root/test/memdevice.c
+/root/test/memdevice.h
+/root/test/monitor.c
+/root/test/monitor.h
+/root/test/monitor_control.c
+/root/test/monitor_read.c
+/root/test/userspace_kernel.h
+memdevice.h
+monitor.h
+userspace_kernel.h

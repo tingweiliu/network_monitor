@@ -1,0 +1,112 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+GLOBALMEM_MAJOR	memdevice.c	57;"	d	file:
+GLOBALMEM_MINOR	memdevice.c	58;"	d	file:
+KERNELBUILD	Makefile	/^KERNELBUILD:=\/usr\/src\/linux\/$/;"	m
+MAX_BUF_SIZE	userspace_kernel.h	67;"	d
+MAX_LIST	monitor.h	44;"	d
+MAX_SAVE_NODE	monitor.h	45;"	d
+MEM_CLEAR	memdevice.c	56;"	d	file:
+SIOGETMONITOR_CONTENT	userspace_kernel.h	75;"	d
+SIOGETMONITOR_COUNT	userspace_kernel.h	74;"	d
+__KERNEL_MEMDEVICE_H__	memdevice.h	33;"	d
+__LINUX_MONITOR_H__	monitor.h	36;"	d
+__USERSPACE_KERNEL_H	userspace_kernel.h	37;"	d
+__clearnode	monitor.c	/^void __clearnode(void)$/;"	f
+__gethashnode	monitor.c	/^struct hashnode *__gethashnode(unsigned char protocol, unsigned short netport)$/;"	f
+__savenode	monitor.c	/^void __savenode(void)$/;"	f
+__shownode	monitor.c	/^void __shownode(void)$/;"	f
+add_data	memdevice.c	/^void add_data(struct delaydata *e)$/;"	f
+addnode	monitor.c	/^struct hashnode *addnode(unsigned char protocol, unsigned short netport)$/;"	f
+bandlist	memdevice.c	/^struct list_head bandlist;$/;"	v	typeref:struct:list_head
+bps	userspace_kernel.h	/^	unsigned long bps;$/;"	m	struct:hashnode
+cachep	monitor.c	/^struct kmem_cache *cachep = NULL;$/;"	v	typeref:struct:kmem_cache
+cdev	memdevice.c	/^	struct cdev cdev; $/;"	m	struct:kernelmem_dev	typeref:struct:kernelmem_dev::cdev	file:
+count	userspace_kernel.h	/^	int count;$/;"	m	struct:monitor_node_ioctl
+cps	userspace_kernel.h	/^	unsigned long cps;$/;"	m	struct:hashnode
+delay_lock	memdevice.c	/^DEFINE_SPINLOCK(delay_lock);$/;"	v
+delaydata	userspace_kernel.h	/^struct delaydata{$/;"	s
+delaydata_queue	memdevice.c	/^DECLARE_WAIT_QUEUE_HEAD(delaydata_queue);$/;"	v
+delnode	monitor.c	/^int delnode(unsigned char protocol, unsigned short netport)$/;"	f
+freelist	memdevice.c	/^void freelist(void)$/;"	f
+gethash	monitor.c	/^static int gethash(unsigned short netport)$/;"	f	file:
+getmonitor_content	monitor.c	/^int getmonitor_content(void __user *arg)$/;"	f
+getmonitor_count	monitor.c	/^int getmonitor_count(void __user *arg)$/;"	f
+hashlist_lock	monitor.c	/^DEFINE_SPINLOCK(hashlist_lock);$/;"	v
+hashnode	userspace_kernel.h	/^struct hashnode{$/;"	s
+hashnode_free	monitor.c	/^void hashnode_free(void)$/;"	f
+hashnode_head_init	monitor.c	/^void hashnode_head_init(void)$/;"	f
+hashnode_list	monitor.c	/^struct hlist_head hashnode_list[MAX_LIST];$/;"	v	typeref:struct:hlist_head
+help	monitor_control.c	/^void help()$/;"	f
+help	netmonitor.sh	/^help()$/;"	f
+hlist_node	monitor_control.c	/^struct hlist_node {$/;"	s	file:
+hlist_node	monitor_read.c	/^struct hlist_node {$/;"	s	file:
+iphook_exit	monitor.c	/^static void iphook_exit(void)$/;"	f	file:
+iphook_in	monitor.c	/^static struct nf_hook_ops iphook_in;$/;"	v	typeref:struct:nf_hook_ops	file:
+iphook_init	monitor.c	/^static int iphook_init(void)$/;"	f	file:
+iphook_out	monitor.c	/^static struct nf_hook_ops iphook_out;$/;"	v	typeref:struct:nf_hook_ops	file:
+ippacket_in	monitor.c	/^static unsigned int ippacket_in(unsigned int hooknum, struct sk_buff *skb,$/;"	f	file:
+ippacket_out	monitor.c	/^static unsigned int ippacket_out(unsigned int hooknum,struct sk_buff *skb,$/;"	f	file:
+kernelmem_dev	memdevice.c	/^struct kernelmem_dev                                     $/;"	s	file:
+kernelmem_devp	memdevice.c	/^struct kernelmem_dev *kernelmem_devp; $/;"	v	typeref:struct:kernelmem_dev
+kernelmem_exit	memdevice.c	/^void kernelmem_exit(void)$/;"	f
+kernelmem_fops	memdevice.c	/^static const struct file_operations kernelmem_fops =$/;"	v	typeref:struct:file_operations	file:
+kernelmem_init	memdevice.c	/^int kernelmem_init(void)$/;"	f
+kernelmem_ioctl	memdevice.c	/^kernelmem_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)$/;"	f	file:
+kernelmem_major	memdevice.c	/^static int kernelmem_major = GLOBALMEM_MAJOR;$/;"	v	file:
+kernelmem_open	memdevice.c	/^int kernelmem_open(struct inode *inode, struct file *filp)$/;"	f
+kernelmem_read	memdevice.c	/^static ssize_t kernelmem_read(struct file *filp, char __user *buf, size_t size,loff_t *ppos)$/;"	f	file:
+kernelmem_release	memdevice.c	/^int kernelmem_release(struct inode *inode, struct file *filp)$/;"	f
+kernelmem_setup_cdev	memdevice.c	/^static void kernelmem_setup_cdev(struct kernelmem_dev *dev, int index)$/;"	f	file:
+kernelmem_write	memdevice.c	/^static ssize_t kernelmem_write(struct file *file, const char __user *buf,$/;"	f	file:
+kmemcache_free	monitor.c	/^void kmemcache_free(void)$/;"	f
+kmemcache_init	monitor.c	/^struct kmem_cache * kmemcache_init(void)$/;"	f
+list	userspace_kernel.h	/^	struct hlist_node list;$/;"	m	struct:hashnode	typeref:struct:hashnode::hlist_node
+list	userspace_kernel.h	/^	struct list_head list;$/;"	m	struct:delaydata	typeref:struct:delaydata::list_head
+list_head	monitor_control.c	/^struct list_head {$/;"	s	file:
+list_head	monitor_read.c	/^struct list_head {$/;"	s	file:
+long_options	monitor_control.c	/^const struct option long_options[] = {$/;"	v	typeref:struct:option
+main	monitor_control.c	/^int main(int argc, char **argv)$/;"	f
+main	monitor_read.c	/^int main()$/;"	f
+max_save_num	monitor.c	/^int max_save_num = MAX_SAVE_NODE;$/;"	v
+monitor_node	userspace_kernel.h	/^struct monitor_node{$/;"	s
+monitor_node_ioctl	userspace_kernel.h	/^struct monitor_node_ioctl{$/;"	s
+myatoi	memdevice.c	/^static int myatoi(char *port)$/;"	f	file:
+name_flag	memdevice.c	/^static int name_flag=0;$/;"	v	file:
+network_monitor-y	Makefile	/^network_monitor-y:=monitor.o memdevice.o$/;"	m
+network_monitor_exit	monitor.c	/^module_exit(network_monitor_exit);$/;"	v
+network_monitor_exit	monitor.c	/^static void __exit network_monitor_exit(void)$/;"	f	file:
+network_monitor_init	monitor.c	/^module_init(network_monitor_init);$/;"	v
+network_monitor_init	monitor.c	/^static int __init network_monitor_init(void)$/;"	f	file:
+next	monitor_control.c	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node	file:
+next	monitor_control.c	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head	file:
+next	monitor_read.c	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node	file:
+next	monitor_read.c	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head	file:
+node	userspace_kernel.h	/^	struct hashnode node;$/;"	m	struct:delaydata	typeref:struct:delaydata::hashnode
+nodes	userspace_kernel.h	/^	struct monitor_node nodes[0];$/;"	m	struct:monitor_node_ioctl	typeref:struct:monitor_node_ioctl::monitor_node
+obj-m	Makefile	/^obj-m:=network_monitor.o$/;"	m
+option	monitor_control.c	/^char option;$/;"	v
+options	monitor_control.c	/^const char *options = "hladtup:";$/;"	v
+port	userspace_kernel.h	/^	unsigned short port;$/;"	m	struct:hashnode
+port	userspace_kernel.h	/^	unsigned short port;$/;"	m	struct:monitor_node
+pprev	monitor_control.c	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::	file:
+pprev	monitor_read.c	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::	file:
+pps	userspace_kernel.h	/^	unsigned long pps;$/;"	m	struct:hashnode
+prev	monitor_control.c	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::	file:
+prev	monitor_read.c	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::	file:
+protocol	userspace_kernel.h	/^	unsigned char protocol;$/;"	m	struct:hashnode
+protocol	userspace_kernel.h	/^	unsigned char protocol;$/;"	m	struct:monitor_node
+savednum	monitor.c	/^atomic_t savednum;$/;"	v
+sem	memdevice.c	/^	struct semaphore sem;$/;"	m	struct:kernelmem_dev	typeref:struct:kernelmem_dev::semaphore	file:
+size	memdevice.c	/^	loff_t size;$/;"	m	struct:kernelmem_dev	file:
+start	netmonitor.sh	/^start()$/;"	f
+stop	netmonitor.sh	/^stop()$/;"	f
+timer	monitor.c	/^struct timer_list timer;$/;"	v	typeref:struct:timer_list
+timer_exit	monitor.c	/^static void timer_exit(void)$/;"	f	file:
+timer_init	monitor.c	/^static void timer_init(void)$/;"	f	file:
+timerfun	monitor.c	/^static void timerfun(unsigned long arg)$/;"	f	file:
+timestamp	userspace_kernel.h	/^	time_t timestamp;$/;"	m	struct:hashnode
